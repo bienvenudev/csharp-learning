@@ -5,7 +5,7 @@ namespace DatingProfile
   class Profile
   {
     private int age;
-    private string[] hobbies;
+    private string[] hobbies = [];
 
     private string Name { get; set; }
     private string City { get; set; }
