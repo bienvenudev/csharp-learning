@@ -74,10 +74,10 @@ Training curriculum covering C# fundamentals, deep-dive language concepts, Postg
 - [x] Events
 - [x] Asynchronous Programming
 - [x] File I/O
-- [ ] Iterators *(current)*
+- [x] Iterators 
 
 ### Up Next
-- [ ] PostgreSQL (SQL Basics + Database Design)
+- [ ] PostgreSQL (SQL Basics + Database Design) *(current)*
 - [ ] ASP.NET
 - [ ] ASP.NET API
 - [ ] Unit Testing (xUnit / Moq)
