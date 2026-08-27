@@ -1,0 +1,49 @@
+@page
+@model TrainingSystem.Pages.CourseDetails
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="container">
+    @if (Model.CurrentCourse != null)
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <h1>@Model.CurrentCourse.Title</h1>
+                <p class="lead">@Model.CurrentCourse.Description</p>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Course Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Instructor:</strong> @Model.CurrentCourse.Instructor</p>
+                                <p><strong>Duration:</strong> @Model.CurrentCourse.Duration hours</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Max Capacity:</strong> @Model.CurrentCourse.MaxCapacity students</p>
+                                <p><strong>Prerequisites:</strong> @Model.CurrentCourse.Prerequisites</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="/Enrollment?courseId=@Model.CurrentCourse.Id" class="btn btn-success btn-lg">Enroll Now</a>
+                    <a href="/" class="btn btn-secondary">Back to Courses</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <h4>Course Not Found</h4>
+            <p>The requested course could not be found.</p>
+            <a href="/" class="btn btn-primary">Return to Course List</a>
+        </div>
+    }
+</div>

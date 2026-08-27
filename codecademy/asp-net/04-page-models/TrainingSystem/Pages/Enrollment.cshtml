@@ -1,0 +1,76 @@
+@page
+@model TrainingSystem.Pages.Enrollment
+
+@{
+    ViewData["Title"] = "Course Enrollment";
+}
+
+<div class="container">
+    <h1>Course Enrollment</h1>
+    
+    @if (Model.Course != null)
+    {
+        <div class="alert alert-info">
+            <h4>@Model.Course.Title</h4>
+            <p>Instructor: @Model.Course.Instructor | Duration: @Model.Course.Duration hours</p>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ConfirmationMessage))
+    {
+        <div class="alert alert-success">
+            @Model.ConfirmationMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.EnrollmentStatus))
+    {
+        <div class="alert alert-info">
+            <strong>Status:</strong> @Model.EnrollmentStatus
+        </div>
+    }
+
+    <form method="post" class="mt-4">
+        <input asp-for="CourseId" type="hidden" />
+        
+        <div class="form-group mb-3">
+            <label asp-for="EmployeeName" class="form-label">Employee Name *</label>
+            <input asp-for="EmployeeName" class="form-control" required />
+        </div>
+        
+        <div class="form-group mb-3">
+            <label asp-for="EmployeeEmail" class="form-label">Employee Email *</label>
+            <input asp-for="EmployeeEmail" type="email" class="form-control" required />
+        </div>
+        
+        <div class="form-group mb-3">
+            <label asp-for="Department" class="form-label">Department</label>
+            <select asp-for="Department" class="form-control">
+                <option value="">Select Department</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Finance">Finance</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Operations">Operations</option>
+                <option value="Sales">Sales</option>
+            </select>
+        </div>
+        
+        <div class="form-group mb-3">
+            <label asp-for="SpecialRequests" class="form-label">Special Requests</label>
+            <textarea asp-for="SpecialRequests" class="form-control" rows="3" placeholder="Any special accommodations or requests..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Submit Enrollment</button>
+            <a href="/CourseDetails?id=@Model.CourseId" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
