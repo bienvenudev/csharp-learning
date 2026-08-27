@@ -1,0 +1,88 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    @{
+        string roomName = "Conference Room A";
+        string roomType = "conference";
+        int capacity = 12;
+        bool hasProjector = true;
+    }
+
+    <h1>@roomName</h1>
+    <h2>Capacity: @capacity</h2>
+
+    <p>@(DateTime.Now.ToString("MMMM dd, yyyy - hh:mm tt"))</p>
+
+    @if(DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 17)
+    {
+        <h3>Room is available for booking</h3> 
+    }
+    else if(DateTime.Now.Hour >= 18 && DateTime.Now.Hour <= 20)
+    {
+        <h3>Room available for after-hours booking (additional fees apply).</h3> 
+    }
+    else
+    {
+        <h3>Room is closed</h3> 
+    }
+
+    @switch(roomType)
+    {
+        case "conference": <p>Standard conference room suitable for team meetings and presentations.</p>
+            break;
+        case "training": <p>Spacious training room equipped for workshops and group learning sessions.</p>
+            break;
+        case "executive": <p>Premium executive room designed for high-level meetings and client visits.</p>
+            break;
+        default: <p>Can't find the room type</p>
+            break;
+    }
+
+    @{
+        List<string> amenities = new List<string> {"Whiteboard", "Projector", "Conference Phone", "WiFi"};
+    }
+
+    <ul>
+        @foreach(string amenity in amenities)
+        {
+            <li>@amenity</li>
+        }
+    </ul>
+
+    @{
+        List<string> avEquipments = new List<string> {"Laptop", "HDMI Cables", "Remote Control", "Microphone"};
+    }
+
+    @if (hasProjector)
+    {
+        <h2>Available AV Equipment: </h2>
+        <ul>
+            @foreach(string equipment in avEquipments)
+            {
+                <li>@equipment</li>
+            }
+        </ul>
+
+    }
+    
+    @for (int i=9; i <= 17; i++)
+    {
+        <p>@i</p>
+    }
+
+    @{
+        int confirmationNumber = 1001;
+        int totalSlots = 8;
+        int counter = 0;
+    }
+
+    @while (counter < totalSlots)
+    {
+        <p>Booking confirmation #@(confirmationNumber++)</p>
+        counter++;
+    }
+</div>
