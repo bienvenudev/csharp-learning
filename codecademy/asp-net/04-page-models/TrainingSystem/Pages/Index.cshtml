@@ -1,0 +1,33 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Corporate Training Courses";
+}
+
+<div class="container">
+    <h1 class="mb-4">Available Training Courses</h1>
+    
+    <div class="row">
+        <!-- Display Code Goes Here -->
+        @foreach (var course in Model.Courses)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">@course.Title</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">@course.Description</p>
+                        <ul class="list-unstyled">
+                            <li><strong>Duration:</strong> @course.Duration hours</li>
+                            <li><strong>Instructor:</strong> @course.Instructor</li>
+                            <li><strong>Capacity:</strong> @course.MaxCapacity students</li>
+                        </ul>
+                        <a href="/CourseDetails?id=@course.Id" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
