@@ -15,7 +15,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MessageContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MessageContext")));
   
-// why are we using transient here and not another thing like scoped or other?
 builder.Services.AddTransient<IDecrypter, Decrypter>();
 builder.Services.AddTransient<IEncrypter, Encrypter>();
 

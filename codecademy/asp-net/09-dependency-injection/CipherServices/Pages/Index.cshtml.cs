@@ -25,7 +25,6 @@ namespace CipherServices.Pages
 
     public IndexModel(MessageContext context, IDecrypter decrypter, IEncrypter encrypter)
     {
-      // is it at this point that the framework creates the object to inject or I'm missing something?
       _context = context;
       _decrypter = decrypter;
       _encrypter = encrypter;
@@ -36,7 +35,7 @@ namespace CipherServices.Pages
       if (ModelState.IsValid)
       {
         var cleanMessage = NewMessage.Text.Trim().ToLower();
-        string encryptedText = _encrypter.Encrypt(cleanMessage); // does this assume that the framework already created an object of _encrypter? and it just injects it or what?
+        string encryptedText = _encrypter.Encrypt(cleanMessage);
         Message message = new Message { Text = encryptedText };
         _context.Messages.Add(message);
         await _context.SaveChangesAsync();
@@ -52,7 +51,7 @@ namespace CipherServices.Pages
     public async Task<IActionResult> OnGetAsync()
     {
       await LoadSecretsAsync(_decrypter, _context);
-      return Page(); // what is page??!
+      return Page();
     }
 
     private async Task LoadSecretsAsync(IDecrypter decrypter, MessageContext context)
