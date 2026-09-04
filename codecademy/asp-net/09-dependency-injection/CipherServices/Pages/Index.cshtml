@@ -26,18 +26,22 @@
 
 <table class="table table-bordered text-center" id="encoded-decoded-table">
     <thead class="cipher-yellow">
-        <tr>
-            <th scope="col">Encoded</th>
-            <th scope="col">Decoded</th>
-        </tr>
+    <tr>
+        <th scope="col">Encoded</th>
+        <th scope="col">Decoded</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (KeyValuePair<string, string> secret in Model.Secrets)
-        {
-            <tr>
-                <td scope="row">@secret.Key</td>
-                <td>@secret.Value</td>
-            </tr>
-        }
+    @foreach (KeyValuePair<string, string> secret in Model.Secrets)
+    {
+        <tr>
+            <td scope="row">@secret.Key</td>
+            <td>@secret.Value</td>
+        </tr>
+    }
     </tbody>
 </table>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
