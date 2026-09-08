@@ -15,6 +15,7 @@ namespace GameCatalogApi.Models
         public string Developer { get; set; } = string.Empty;
         
         [Required]
+        [StringLength(50)]
         public string Genre { get; set; } = string.Empty;
         
         [Range(0, 100)]
