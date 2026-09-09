@@ -1,0 +1,49 @@
+@GameCatalogApi_HostAddress = http://localhost:5234
+
+GET {{GameCatalogApi_HostAddress}}/api/Games
+Accept: application/json
+
+###
+
+GET {{GameCatalogApi_HostAddress}}/api/Games/1
+Accept: application/json
+
+###
+
+GET {{GameCatalogApi_HostAddress}}/api/Games/search?title=chaos&genre=action&releaseYear=2019
+Accept: application/json
+
+###
+
+POST {{GameCatalogApi_HostAddress}}/api/Games
+Content-Type: application/json
+
+{
+  "title": "Test Game",
+  "developer": "Test Studio",
+  "genre": "Puzzle",
+  "price": 19.99,
+  "releaseYear": 2024,
+  "isMultiplayer": false
+}
+
+###
+
+PUT {{GameCatalogApi_HostAddress}}/api/Games/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Realm of Shadows",
+  "developer": "Mystic Studios",
+  "genre": "RPG",
+  "price": 34.99,
+  "releaseYear": 2018,
+  "isMultiplayer": false
+}
+
+###
+
+DELETE {{GameCatalogApi_HostAddress}}/api/Games/1
+
+###
