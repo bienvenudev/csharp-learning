@@ -22,7 +22,7 @@ namespace GameCatalogApi.Controllers
             if (_gameService.GetGame(gameId) == null)
                 return NotFound($"Game with ID {gameId} not found");
 
-            return _gameService.GetReviewsByGameId(gameId);
+            return Ok(_gameService.GetReviewsByGameId(gameId));
         }
 
         // GET: api/Reviews/5

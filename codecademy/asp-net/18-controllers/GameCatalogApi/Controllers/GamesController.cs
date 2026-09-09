@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using GameCatalogApi.Models;
 using GameCatalogApi.Services;
-using System.Collections.Generic;
 
 namespace GameCatalogApi.Controllers
 {
@@ -18,7 +17,7 @@ namespace GameCatalogApi.Controllers
 
         // GET: api/Games
         [HttpGet]
-        public ActionResult<IEnumerable<Game>> GetAll() => _gameService.GetAllGames();
+        public ActionResult<IEnumerable<Game>> GetAll() => Ok(_gameService.GetAllGames());
 
         // GET: api/Games/5
         [HttpGet("{id}")]
@@ -39,12 +38,7 @@ namespace GameCatalogApi.Controllers
             [FromQuery] string? genre,
             [FromQuery] int? releaseYear)
         {
-            var games = _gameService.SearchGames(title, genre, releaseYear);
-
-            if (games.Count == 0)
-                return new List<Game>(); // Return empty list instead of 404
-
-            return games;
+            return Ok(_gameService.SearchGames(title, genre, releaseYear));
         }
 
         // POST: api/Games

@@ -101,11 +101,11 @@ namespace GameCatalogApi.Services
         private static int _nextReviewId = 6;
 
         // Game methods
-        public List<Game> GetAllGames() => _games;
+        public IEnumerable<Game> GetAllGames() => _games;
 
         public Game? GetGame(int id) => _games.FirstOrDefault(g => g.Id == id);
 
-        public List<Game> SearchGames(string? title, string? genre, int? releaseYear)
+        public IEnumerable<Game> SearchGames(string? title, string? genre, int? releaseYear)
         {
             var result = _games.AsQueryable();
 
@@ -165,8 +165,8 @@ namespace GameCatalogApi.Services
         }
 
         // Review methods
-        public List<Review> GetReviewsByGameId(int gameId) =>
-            _reviews.Where(r => r.GameId == gameId).ToList();
+        public IEnumerable<Review> GetReviewsByGameId(int gameId) =>
+            _reviews.Where(r => r.GameId == gameId);
 
         public Review? GetReview(int id) =>
             _reviews.FirstOrDefault(r => r.Id == id);
