@@ -17,7 +17,7 @@ namespace GameCatalogApi.Controllers
 
         // GET: api/Games
         [HttpGet]
-        public ActionResult<IEnumerable<Game>> GetAll() => Ok(_gameService.GetAllGames());
+        public ActionResult<List<Game>> GetAll() => Ok(_gameService.GetAllGames());
 
         // GET: api/Games/5
         [HttpGet("{id}")]
@@ -33,7 +33,7 @@ namespace GameCatalogApi.Controllers
 
         // GET: api/Games/search?title=skyrim&genre=rpg&releaseYear=2011
         [HttpGet("search")]
-        public ActionResult<IEnumerable<Game>> Search(
+        public ActionResult<List<Game>> Search(
             [FromQuery] string? title,
             [FromQuery] string? genre,
             [FromQuery] int? releaseYear)
